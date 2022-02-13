@@ -1,0 +1,19 @@
+---
+- hosts: all
+  tasks:
+    - copy:
+        src: /home/pain/Desktop/proj/java-maven-app/target/java-maven-app-1.1.0-SNAPSHOT.jar
+        dest: /home/ubuntu/java-maven-app-1.1.0-SNAPSHOT.jar
+  
+  tasks:     
+    - name: install java
+      apt:
+      name: openjdk-8-jre-headless
+      state: present
+      update_cache: true
+      become: true
+ 
+  tasks:
+    - name: installing server
+      shell: java -jar java-maven-app-1.1.0-SNAPSHOT.jar
+
